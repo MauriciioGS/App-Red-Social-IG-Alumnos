@@ -124,13 +124,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultNavHost="true"
-                    />
-                <!--
-                app:navGraph="@navigation/nav_menu"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                app:defaultNavHost="true"
-                app:navGraph=""
-                -->
+                    android:name="androidx.navigation.fragment.NavHostFragment"
+                    app:navGraph="@navigation/nav_menu">
+
+                </androidx.fragment.app.FragmentContainerView>
 
             </androidx.core.widget.NestedScrollView>
 
@@ -149,8 +146,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/home_nav_menu"
             />
-        <!--app:menu="@menu/home_nav_menu"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
