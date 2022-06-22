@@ -174,7 +174,7 @@ class Camara : AppCompatActivity() {
         val cameraProvider = cameraProvider
             ?: throw IllegalStateException("Error al iniciar la camara.")
 
-        // CameraSelector
+        // CameraSelectorr
         val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
 
         // Preview
