@@ -207,11 +207,19 @@ class Camara : AppCompatActivity() {
 
         try {
             //Vincular la camara a "use cases"
-            cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
+            cameraProvider.bindToLifecycle(
+                this,
+                cameraSelector,
+                preview,
+                imageCapture,
+                imageAnalyzer
+            )
 
             // Generar vista previa de la camara
             preview?.setSurfaceProvider(binding.viewFinder.surfaceProvider)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case fallo", exc)
 
+        }
+    }
 }
