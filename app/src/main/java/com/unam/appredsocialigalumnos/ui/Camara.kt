@@ -183,7 +183,7 @@ class Camara : AppCompatActivity() {
             .setTargetRotation(rotation)
             .build()
 
-        // ImageCapture
+        // ImageCapturee
         imageCapture = ImageCapture.Builder()
             .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
             .setTargetAspectRatio(screenAspectRatio)
