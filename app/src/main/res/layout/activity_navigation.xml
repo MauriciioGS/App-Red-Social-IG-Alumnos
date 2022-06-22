@@ -138,15 +138,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:labelVisibilityMode="unlabeled"
-            android:backgroundTint="@color/white"
             app:itemIconSize="22dp"
-            app:itemRippleColor="@color/white"
             app:itemIconTint="@drawable/nav_view_selected_icons"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/home_nav_menu"
+            style="@style/BottomNavView"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
