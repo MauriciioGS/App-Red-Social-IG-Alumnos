@@ -21,14 +21,12 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:id="@+id/collapsingToolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:contentScrim="@color/white"
                     app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
                     <RelativeLayout
@@ -38,7 +36,6 @@
                         android:layout_marginTop="35dp"
                         app:layout_collapseMode="parallax"
                         app:layout_collapseParallaxMultiplier="0.7">
-
                         <TextView
                             android:id="@+id/tvSubtitle"
                             android:layout_width="wrap_content"
@@ -51,7 +48,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        app:layout_collapseMode="pin">
+                        app:layout_collapseMode="pin"
+                        style="@style/ToolBar">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/ll_toolbar"

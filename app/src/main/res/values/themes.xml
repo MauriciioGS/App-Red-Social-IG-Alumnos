@@ -24,10 +24,16 @@
         <item name="itemRippleColor">@color/white</item>
     </style>
 
+    <style name="ToolBar" parent="Theme.AppRedSocialIGAlumnos">
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
     <style name="FullScreenDialog">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
+
 
 </resources>
