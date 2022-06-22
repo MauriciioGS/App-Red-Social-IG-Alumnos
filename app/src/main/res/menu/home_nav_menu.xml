@@ -10,9 +10,6 @@
         android:icon="@drawable/ic_search_unselected"
         android:title="@string/title_search" />
 
-
-
-
     <item
         android:id="@+id/camaraActivity"
         android:icon="@drawable/ic_video_rils"
