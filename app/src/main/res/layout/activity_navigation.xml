@@ -78,7 +78,7 @@
                                 app:layout_constraintEnd_toStartOf="@+id/ivActivity"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="ContentDescription" />
-
+//hola
                             <ImageView
                                 android:id="@+id/ivActivity"
                                 android:layout_width="22dp"
