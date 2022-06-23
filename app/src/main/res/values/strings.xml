@@ -8,4 +8,6 @@
     <string name="no_existe_dispositivo">No existen dispositivo</string>
     <string name="img_guardar">IMG guardada</string>
     <string name="title_profile">Perfil</string>
+    <string name="user_name">User Name</string>
+    <string name="contraseña">Password</string>
 </resources>

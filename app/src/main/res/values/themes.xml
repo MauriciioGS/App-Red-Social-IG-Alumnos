@@ -35,5 +35,15 @@
     </style>
 
 
+    <style name="Botones" parent="Theme.AppRedSocialIGAlumnos">
+        <item name="backgroundTint">@color/blue_text</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+
+
 
 </resources>

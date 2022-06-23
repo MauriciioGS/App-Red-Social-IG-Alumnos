@@ -16,9 +16,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <!--
-    app:navGraph="@navigation/nav_main"
-    android:name="androidx.navigation.fragment.NavHostFragment"-->
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_main"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

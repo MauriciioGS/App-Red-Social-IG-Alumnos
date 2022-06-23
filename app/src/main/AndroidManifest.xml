@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.unam.appredsocialigalumnos">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" android:maxSdkVersion="28"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera.any"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,7 +22,7 @@
             android:name=".ui.Camara"
             android:exported="false" />
         <activity
-            android:name=".ui.NavigationActivity"
+            android:name=".ui.MainAppActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreen"
@@ -28,9 +33,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+
         <activity
-            android:name=".ui.MainAppActivity"
-            android:exported="true" />
+            android:name=".ui.NavigationActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
 
 

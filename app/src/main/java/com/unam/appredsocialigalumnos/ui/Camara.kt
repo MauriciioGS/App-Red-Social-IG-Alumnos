@@ -1,5 +1,7 @@
 package com.unam.appredsocialigalumnos.ui
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.media.MediaScannerConnection
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -17,10 +19,15 @@ import androidx.core.net.toFile
 import com.unam.appredsocialigalumnos.R
 import com.unam.appredsocialigalumnos.databinding.ActivityCamaraBinding
 import java.io.File
+import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.min
+import android.Manifest.*
 
 typealias LumaListener=(luma:Double)->Unit
 
@@ -222,4 +229,89 @@ class Camara : AppCompatActivity() {
 
         }
     }
+    private class LuminosityAnalyzer(listener: LumaListener? = null) : ImageAnalysis.Analyzer {
+        private val frameRateWindow = 8
+        private val frameTimestamps = ArrayDeque<Long>(5)
+        private val listeners = ArrayList<LumaListener>().apply { listener?.let { add(it) } }
+        private var lastAnalyzedTimestamp = 0L
+        var framesPerSecond: Double = -1.0
+            private set
+
+        fun onFrameAnalyzed(listener: LumaListener) = listeners.add(listener)
+
+        private fun ByteBuffer.toByteArray(): ByteArray {
+            rewind()    // Rewind the buffer to zero
+            val data = ByteArray(remaining())
+            get(data)   // Copy the buffer into a byte array
+            return data // Return the byte array
+        }
+
+        override fun analyze(image: ImageProxy) {
+            // If there are no listeners attached, we don't need to perform analysis
+            if (listeners.isEmpty()) {
+                image.close()
+                return
+            }
+
+            val currentTime = System.currentTimeMillis()
+            frameTimestamps.push(currentTime)
+
+            while (frameTimestamps.size >= frameRateWindow) frameTimestamps.removeLast()
+            val timestampFirst = frameTimestamps.peekFirst() ?: currentTime
+            val timestampLast = frameTimestamps.peekLast() ?: currentTime
+            framesPerSecond = 1.0 / ((timestampFirst - timestampLast) /
+                    frameTimestamps.size.coerceAtLeast(1).toDouble()) * 1000.0
+
+
+            lastAnalyzedTimestamp = frameTimestamps.first
+
+            val buffer = image.planes[0].buffer
+
+            val data = buffer.toByteArray()
+
+            val pixels = data.map { it.toInt() and 0xFF }
+
+            val luma = pixels.average()
+
+            listeners.forEach { it(luma) }
+
+            image.close()
+        }
+    }
+
+    private fun aspectRatio(width: Int, height: Int): Int {
+        val previewRatio = max(width, height).toDouble() / min(width, height)
+        if (abs(previewRatio - RATIO_4_3_VALUE) <= abs(previewRatio - RATIO_16_9_VALUE)) {
+            return AspectRatio.RATIO_4_3
+        }
+        return AspectRatio.RATIO_16_9
+    }
+    private fun getOutputDirectory(): File{
+        val mediaDir = externalMediaDirs.firstOrNull()?.let{
+            File(it," ejcamerax").apply { mkdir() } }
+        return if (mediaDir != null && mediaDir.exists())
+            mediaDir else filesDir
+        }
+
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all{
+    ContextCompat.checkSelfPermission(baseContext,it) ==PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun  onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
+    }
+
+    //Declaracion de constantes
+    companion object {
+    private const val TAG = "CamaraXBasica"
+    private const val FILENAME =  "yyyy-MM-dd-HH-mm-ss-SSS"
+    private const val RATIO_4_3_VALUE = 4.0 / 3.0
+    private const val RATIO_16_9_VALUE = 16.0 / 9.0
+
+    private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+    private const val REQUEST_CODE_PERMISSIONS = 10
+
+    }
+
 }
