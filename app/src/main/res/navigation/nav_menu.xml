@@ -22,5 +22,14 @@
             android:name="ShowAppBar"
             android:defaultValue="true"/>
     </fragment>
+    <activity
+        android:id="@+id/camaraActivity"
+        android:name="com.unam.appredsocialigalumnos.ui.Camara"
+        android:label="activity_camara"
+        tools:layout="@layout/activity_camara" >
+        <argument
+            android:name="ShowAppBar"
+            android:defaultValue="true"/>
+    </activity>
 
 </navigation>

@@ -11,9 +11,9 @@
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/rilsFragment"
-        android:icon="@drawable/ic_video_rils"
-        android:title="@string/title_videos" />
+        android:id="@+id/camaraActivity"
+        android:icon="@drawable/ic_camara"
+        android:title="@string/title_camara" />
 
     <item
         android:id="@+id/storeFragment"
