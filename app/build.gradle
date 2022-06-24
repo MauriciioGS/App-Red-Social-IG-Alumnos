@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -72,4 +73,15 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:1.0.2"
     implementation "androidx.camera:camera-view:1.2.0-alpha02"
     implementation "androidx.camera:camera-extensions:1.2.0-alpha02"
+
+    // Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-core:21.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.5'
+    implementation 'com.google.firebase:firebase-firestore:24.1.2'
+    // Auth
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    // Firestore
+    implementation 'com.google.firebase:firebase-firestore:24.1.2'
 }
