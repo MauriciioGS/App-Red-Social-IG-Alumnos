@@ -7,9 +7,11 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.unam.appredsocialigalumnos.R
 import com.unam.appredsocialigalumnos.databinding.FragmentHostLoginBinding
+import com.unam.appredsocialigalumnos.network.FirestoreService
 import com.unam.appredsocialigalumnos.util.findNavControllerSafely
 
 const val USERNAME_KEY = "username_key"
@@ -18,10 +20,12 @@ class LoginFragment :  FragmentBase<FragmentHostLoginBinding>(
     R.layout.fragment_host_login, FragmentHostLoginBinding::bind) {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var firestoreService: FirestoreService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
+        firestoreService = FirestoreService(FirebaseFirestore.getInstance())
     }
 
     override fun onStart() {
@@ -41,6 +45,7 @@ class LoginFragment :  FragmentBase<FragmentHostLoginBinding>(
             findNavControllerSafely()?.navigate(R.id.action_loginFragment_to_signUpFragment)
         }
         binding.btnLogin.setOnClickListener {
+            showAlert()
             val email = binding.usernameTextField.editText?.text.toString()
             val password = binding.passwordTextField.editText?.text.toString()
             if (email.isNotEmpty() && password.isNotEmpty()){
@@ -73,6 +78,7 @@ class LoginFragment :  FragmentBase<FragmentHostLoginBinding>(
         val intent = Intent(requireContext(), NavigationActivity::class.java)
         intent.putExtra(USERNAME_KEY, user)
         startActivity(intent)
+        hideAlert()
         requireActivity().finish()
     }
 

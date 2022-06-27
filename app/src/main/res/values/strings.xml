@@ -10,6 +10,8 @@
     <string name="proporcionar_permisos">Debe proporcionar permisos para accesar al dispositivo.</string>
     <string name="no_existe_dispositivo">No existen dispositivo de captura disponibles…</string>
     <string name="img_guardada">IMG guardada</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_aceptar">Aceptar</string>
 
 
 </resources>
