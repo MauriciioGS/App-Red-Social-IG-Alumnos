@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.unam.appredsocialigalumnos">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" android:maxSdkVersion="28"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera.any"/>
@@ -19,9 +19,6 @@
         android:theme="@style/Theme.AppRedSocialIGAlumnos"
         tools:targetApi="31">
         <activity
-            android:name=".ui.Camara"
-            android:exported="false" />
-        <activity
             android:name=".ui.MainAppActivity"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -29,24 +26,20 @@
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
-
         <activity
             android:name=".ui.NavigationActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-
-
+        <activity
+            android:name=".ui.Camara"
+            android:exported="true" />
     </application>
 
 </manifest>

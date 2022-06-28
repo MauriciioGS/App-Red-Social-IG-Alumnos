@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/ic_switch"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:contentDescription="Cambiar cámara" />
+        android:contentDescription="@string/cambiar_camara" />
 
     <ImageButton
         android:id="@+id/camera_capture_button"
@@ -33,13 +33,10 @@
         android:layout_height="@dimen/round_button_large"
         android:layout_marginBottom="@dimen/shutter_button_margin"
         android:scaleType="fitCenter"
-        android:background="@drawable/ic_shure"
+        android:background="@drawable/ic_shutter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:contentDescription="Tomar foto" />
-
-
-
+        android:contentDescription="@string/tomar_foto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

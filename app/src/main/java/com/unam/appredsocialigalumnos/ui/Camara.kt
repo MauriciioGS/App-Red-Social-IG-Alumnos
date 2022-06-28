@@ -27,12 +27,11 @@ import java.util.concurrent.Executors
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
-import android.Manifest.*
 
-typealias LumaListener=(luma:Double)->Unit
-
+typealias LumaListener = (luma: Double) -> Unit
 
 class Camara : AppCompatActivity() {
+
     private var preview: Preview? = null
     private var imageAnalyzer: ImageAnalysis? = null
     private var camera: Camera? = null
@@ -43,10 +42,9 @@ class Camara : AppCompatActivity() {
     private lateinit var cameraExecutor: ExecutorService
 
     lateinit var binding : ActivityCamaraBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         binding = ActivityCamaraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -76,6 +74,7 @@ class Camara : AppCompatActivity() {
                 this, REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
         IntArray) {
@@ -112,6 +111,7 @@ class Camara : AppCompatActivity() {
             bindCameraUseCases()
         }, ContextCompat.getMainExecutor(this))
     }
+
     private fun takePhoto() {
         // Se crea el archivo de salida
         val photoFile = File(
@@ -132,8 +132,7 @@ class Camara : AppCompatActivity() {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
 
-                    Toast.makeText(baseContext, R.string.img_guardar.toString()+ "${savedUri}", Toast.LENGTH_SHORT).show()
-
+                    Toast.makeText(baseContext,  R.string.img_guardada.toString() + " ${savedUri}", Toast.LENGTH_SHORT).show()
 
                     // Utilizamos [MediaScannerConnection] para escanear los medios de la galeria
                     val mimeType = MimeTypeMap.getSingleton()
@@ -147,8 +146,8 @@ class Camara : AppCompatActivity() {
                     }
                 }
             })
-
     }
+
     private fun updateCameraSwitchButton() {
         val switchCamerasButton = binding.cameraSwitchButton
         try {
@@ -157,6 +156,7 @@ class Camara : AppCompatActivity() {
             switchCamerasButton.isEnabled = false
         }
     }
+
     /** Devuelte true si el dispositivo cuenta con camara trasera, caso contrario devuelve false */
     private fun hasBackCamera(): Boolean {
         return cameraProvider?.hasCamera(CameraSelector.DEFAULT_BACK_CAMERA) ?: false
@@ -166,6 +166,7 @@ class Camara : AppCompatActivity() {
     private fun hasFrontCamera(): Boolean {
         return cameraProvider?.hasCamera(CameraSelector.DEFAULT_FRONT_CAMERA) ?: false
     }
+
     private fun bindCameraUseCases() {
 
         // Metricas para determinar tamaño completo de pantalla
@@ -181,7 +182,7 @@ class Camara : AppCompatActivity() {
         val cameraProvider = cameraProvider
             ?: throw IllegalStateException("Error al iniciar la camara.")
 
-        // CameraSelectorr
+        // CameraSelector
         val cameraSelector = CameraSelector.Builder().requireLensFacing(lensFacing).build()
 
         // Preview
@@ -190,7 +191,7 @@ class Camara : AppCompatActivity() {
             .setTargetRotation(rotation)
             .build()
 
-        // ImageCapturee
+        // ImageCapture
         imageCapture = ImageCapture.Builder()
             .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
             .setTargetAspectRatio(screenAspectRatio)
@@ -214,21 +215,15 @@ class Camara : AppCompatActivity() {
 
         try {
             //Vincular la camara a "use cases"
-            cameraProvider.bindToLifecycle(
-                this,
-                cameraSelector,
-                preview,
-                imageCapture,
-                imageAnalyzer
-            )
+            cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
 
             // Generar vista previa de la camara
             preview?.setSurfaceProvider(binding.viewFinder.surfaceProvider)
         } catch (exc: Exception) {
             Log.e(TAG, "Use case fallo", exc)
-
         }
     }
+
     private class LuminosityAnalyzer(listener: LumaListener? = null) : ImageAnalysis.Analyzer {
         private val frameRateWindow = 8
         private val frameTimestamps = ArrayDeque<Long>(5)
@@ -286,32 +281,34 @@ class Camara : AppCompatActivity() {
         }
         return AspectRatio.RATIO_16_9
     }
+
+    // Obtener directorio de salida
     private fun getOutputDirectory(): File{
-        val mediaDir = externalMediaDirs.firstOrNull()?.let{
-            File(it," ejcamerax").apply { mkdir() } }
+        val mediaDir = externalMediaDirs.firstOrNull()?.let {
+            File(it,"ejcamerax").apply { mkdirs() } }
         return if (mediaDir != null && mediaDir.exists())
             mediaDir else filesDir
-        }
-
-    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all{
-    ContextCompat.checkSelfPermission(baseContext,it) ==PackageManager.PERMISSION_GRANTED
     }
 
-    override fun  onDestroy() {
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all{
+        ContextCompat.checkSelfPermission(baseContext,it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()
     }
 
-    //Declaracion de constantes
-    companion object {
-    private const val TAG = "CamaraXBasica"
-    private const val FILENAME =  "yyyy-MM-dd-HH-mm-ss-SSS"
-    private const val RATIO_4_3_VALUE = 4.0 / 3.0
-    private const val RATIO_16_9_VALUE = 16.0 / 9.0
+    // Declaración de constantes
+    companion object{
+        private const val TAG = "CamaraXBasica"
+        private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
+        private const val RATIO_4_3_VALUE = 4.0 / 3.0
+        private const val RATIO_16_9_VALUE = 16.0 / 9.0
 
-    private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-    private const val REQUEST_CODE_PERMISSIONS = 10
-
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private const val REQUEST_CODE_PERMISSIONS = 10
     }
+
 
 }

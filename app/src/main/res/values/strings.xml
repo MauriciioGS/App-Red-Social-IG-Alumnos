@@ -2,9 +2,16 @@
     <string name="app_name">App Red Social IG</string>
     <string name="title_home">Home</string>
     <string name="title_search">Buscar</string>
-    <string name="title_videos">Videos</string>
+    <string name="title_camara">Camara</string>
     <string name="title_store">Tienda</string>
     <string name="title_profile">Perfil</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cambiar_camara">Cambiar camara</string>
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="proporcionar_permisos">Debe proporcionar permisos para accesar al dispositivo.</string>
+    <string name="no_existe_dispositivo">No existen dispositivo de captura disponibles…</string>
+    <string name="img_guardada">IMG guardada</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_aceptar">Aceptar</string>
+
+
 </resources>
