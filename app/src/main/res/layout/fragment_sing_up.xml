@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,80 +7,81 @@
 
     <ImageView
         android:id="@+id/iv_logo_singup"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_instagram"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Regśytrate para ver fotos de tus amigos"
-        app:layout_constraintBottom_toTopOf="@+id/tv_username_signup"
-        app:layout_constraintEnd_toEndOf="@+id/iv_logo_singup"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/iv_logo_singup"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo_singup"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_singup" />
 
     <!--Recibir un nombre random consumiendo una API publica -->
 
-    <TextView
+    <EditText
         android:id="@+id/tv_username_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User name"
-        app:layout_constraintBottom_toTopOf="@+id/edit_password_singup"
-        app:layout_constraintEnd_toEndOf="@+id/iv_logo_singup"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/iv_logo_singup"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
+        android:hint="User name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Correo electronico"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username_signup" />
 
     <EditText
         android:id="@+id/edit_password_singup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="Contrseña"
-        app:layout_constraintBottom_toTopOf="@+id/edit_re_password_signup"
-        app:layout_constraintEnd_toEndOf="@+id/tv_username_signup"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="@+id/tv_username_signup"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955" />
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <EditText
         android:id="@+id/edit_re_password_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="Confirmar contraseña"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register"
-        app:layout_constraintEnd_toEndOf="@+id/edit_password_singup"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edit_password_singup"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.822" />
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_password_singup" />
 
     <Button
         android:id="@+id/btn_register"
+        style="@style/Botones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:text="Regístrate"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edit_re_password_signup"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="@+id/edit_re_password_signup"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_re_password_signup" />
 </androidx.constraintlayout.widget.ConstraintLayout>

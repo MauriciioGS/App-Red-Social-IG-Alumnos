@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "767983917252",
+    "project_id": "app-red-social-curso-android",
+    "storage_bucket": "app-red-social-curso-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767983917252:android:300a27ea6f0daaf2c35191",
+        "android_client_info": {
+          "package_name": "com.unam.appredsocialigalumnos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767983917252-8goih25i95ftehigr05gv0d1b4f9eutc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.unam.appredsocialigalumnos",
+            "certificate_hash": "03880fd02c8698974b0dcc4303bb1d00c0474881"
+          }
+        },
+        {
+          "client_id": "767983917252-5h87g3bglhnd2c5ivev0lf334oi4k5k7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIFFFFP_AA-tq3OkLlICS8qAwMLRV1nmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767983917252-5h87g3bglhnd2c5ivev0lf334oi4k5k7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

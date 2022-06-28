@@ -11,11 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.unam.appredsocialigalumnos.R
+import com.unam.appredsocialigalumnos.util.AlertBase
 
 abstract class FragmentBase <VB : ViewBinding>(
     layout : Int,
     private val setUpBinding : (View) -> VB
-): Fragment(layout){
+): Fragment(layout), AlertBase {
 
     protected var progressDialog : Dialog? = null
     protected var errorDialog : MaterialAlertDialogBuilder? = null
@@ -54,6 +55,38 @@ abstract class FragmentBase <VB : ViewBinding>(
             activity.binding.collapsingToolbar.visibility = View.GONE
             setRelativePanelDimen()
         }
+    }
+
+    override fun showAlert() {
+        try {
+            progressDialog = loadingDialog(requireContext())
+        }catch (e : java.lang.Exception){
+            e.printStackTrace()
+        }
+    }
+
+    override fun hideAlert() {
+        try{
+            progressDialog?.let {
+                if(it.isShowing)
+                    it.cancel()
+            }
+        }catch (e : Exception){
+            e.printStackTrace()
+        }
+    }
+
+    protected fun showErrorDialog(title : String, message: String){
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(title)
+            .setMessage(message)
+            .setNeutralButton(resources.getString(R.string.btn_cancel)) { dialog, which ->
+                // Respond to neutral button press
+            }
+            .setPositiveButton(resources.getString(R.string.btn_aceptar)) { dialog, which ->
+                // Respond to possitive button press
+            }
+            .show()
     }
 
     private fun setRelativePanelDimen(option: Int = 1) {

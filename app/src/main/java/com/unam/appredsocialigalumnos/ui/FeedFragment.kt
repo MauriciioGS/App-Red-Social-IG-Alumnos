@@ -8,6 +8,6 @@ class FeedFragment : FragmentBase<FragmentFeedBinding>(
     R.layout.fragment_feed, FragmentFeedBinding::bind) {
 
     override fun initElements() {
-
+        showCollapsingToolBar(true)
     }
 }

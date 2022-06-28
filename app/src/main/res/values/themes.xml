@@ -34,6 +34,34 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="Botones" parent="Theme.AppRedSocialIGAlumnos">
+        <item name="backgroundTint">@color/blue_text</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
+    <style name="ItemPostRV" parent="Widget.Material3.CardView.Elevated">
+        <item name="backgroundTint">@color/black</item>
+    </style>
+
+    <style name="TextPosts" parent="Theme.AppRedSocialIGAlumnos">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextDescPosts" parent="Theme.AppRedSocialIGAlumnos">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ProfileIcon" parent="Theme.AppRedSocialIGAlumnos">
+        <item name="civ_circle_background_color">@color/light_gray</item>
+        <item name="android:src">@drawable/ic_user</item>
+    </style>
+
+    <style name="EditTextComment" parent="ThemeOverlay.Material3.TextInputEditText.FilledBox">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeWidth">0dp</item>
+    </style>
 
 </resources>
