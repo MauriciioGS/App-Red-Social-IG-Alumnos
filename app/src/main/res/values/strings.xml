@@ -12,6 +12,7 @@
     <string name="img_guardada">IMG guardada</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_aceptar">Aceptar</string>
+    <string name="hello_blank_fragment">hola</string>
 
 
 </resources>
