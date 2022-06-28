@@ -3,11 +3,9 @@ package com.unam.appredsocialigalumnos.ui
 import com.unam.appredsocialigalumnos.R
 import com.unam.appredsocialigalumnos.databinding.FragmentSearchBinding
 
-class SearchFragment :  FragmentBase<FragmentSearchBinding>(
-    R.layout.fragment_search, FragmentSearchBinding::bind) {
-
+class SearchFragment : FragmentBase<FragmentSearchBinding>(
+    R.layout.fragment_search,FragmentSearchBinding::bind) {
     override fun initElements() {
-        // New
-        showCollapsingToolBar()
+        TODO("Not yet implemented")
     }
 }

@@ -21,12 +21,14 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:id="@+id/collapsingToolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:contentScrim="@color/white"
                     app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
                     <RelativeLayout
@@ -36,6 +38,7 @@
                         android:layout_marginTop="35dp"
                         app:layout_collapseMode="parallax"
                         app:layout_collapseParallaxMultiplier="0.7">
+
                         <TextView
                             android:id="@+id/tvSubtitle"
                             android:layout_width="wrap_content"
@@ -48,8 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/transparent"
-                        app:layout_collapseMode="pin"
-                        style="@style/ToolBar">
+                        app:layout_collapseMode="pin">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/ll_toolbar"
@@ -78,6 +80,7 @@
                                 app:layout_constraintEnd_toStartOf="@+id/ivActivity"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:ignore="ContentDescription" />
+
                             <ImageView
                                 android:id="@+id/ivActivity"
                                 android:layout_width="22dp"
@@ -113,7 +116,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fillViewport="true"
-                style="@style/ToolBar"
                 android:isScrollContainer="true"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
@@ -123,9 +125,8 @@
                     android:layout_height="wrap_content"
                     app:defaultNavHost="true"
                     android:name="androidx.navigation.fragment.NavHostFragment"
-                    app:navGraph="@navigation/nav_menu">
-
-                </androidx.fragment.app.FragmentContainerView>
+                    app:navGraph="@navigation/nav_menu"
+                    />
 
             </androidx.core.widget.NestedScrollView>
 
@@ -136,15 +137,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:labelVisibilityMode="unlabeled"
+            android:backgroundTint="@color/white"
             app:itemIconSize="22dp"
+            app:itemRippleColor="@color/white"
             app:itemIconTint="@drawable/nav_view_selected_icons"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/home_nav_menu"
-            style="@style/BottomNavView"
             />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

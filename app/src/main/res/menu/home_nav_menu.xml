@@ -11,7 +11,7 @@
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/camaraActivity"
+        android:id="@+id/rilsFragment"
         android:icon="@drawable/ic_video_rils"
         android:title="@string/title_videos" />
 
@@ -24,4 +24,5 @@
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_user"
         android:title="@string/title_profile" />
+
 </menu>

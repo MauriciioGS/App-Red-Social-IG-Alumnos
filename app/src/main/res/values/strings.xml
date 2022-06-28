@@ -2,12 +2,9 @@
     <string name="app_name">App Red Social IG</string>
     <string name="title_home">Home</string>
     <string name="title_search">Buscar</string>
-    <string name="title_videos">Camara</string>
+    <string name="title_videos">Videos</string>
     <string name="title_store">Tienda</string>
-    <string name="proporcionar_permisos">Debe proporcionar servicios</string>
-    <string name="no_existe_dispositivo">No existen dispositivo</string>
-    <string name="img_guardar">IMG guardada</string>
     <string name="title_profile">Perfil</string>
-    <string name="user_name">User Name</string>
-    <string name="contraseña">Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
